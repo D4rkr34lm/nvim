@@ -15,5 +15,8 @@ return {
         vim.snippet.expand(args.body)
       end,
     },
+		completion = {
+    	completeopt = 'menu,menuone,noinsert'
+  	}
   }
 }

@@ -1,3 +1,5 @@
+vim.g.mapleader = "<Space>"
+
 require("config.lazy")
 
 vim.cmd("colorscheme kanagawa")
@@ -23,3 +25,6 @@ vim.fn.sign_define("DiagnosticSignInfo", { text = " ", texthl = "DiagnosticSi
 vim.fn.sign_define("DiagnosticSignHint", { text = "󰌵", texthl = "DiagnosticSignHint" })
 
 vim.cmd("Neotree")
+
+require("mappings")
+require("autocmd")
