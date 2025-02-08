@@ -16,8 +16,8 @@ vim.opt.tabstop = 2 -- insert 2 spaces for a tab
 vim.opt.wrap = true -- wrap lines
 
 -- use treesitter folding
-vim.opt.foldmethod = "expr"
-vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+-- vim.opt.foldmethod = "expr"
+-- vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 
 vim.fn.sign_define("DiagnosticSignError", { text = " ", texthl = "DiagnosticSignError" })
 vim.fn.sign_define("DiagnosticSignWarn", { text = " ", texthl = "DiagnosticSignWarn" })
