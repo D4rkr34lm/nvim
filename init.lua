@@ -17,3 +17,4 @@ vim.opt.wrap = true -- wrap lines
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 
+vim.cmd("Neotree")
