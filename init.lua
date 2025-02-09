@@ -1,4 +1,5 @@
 vim.g.mapleader = "<Space>"
+vim.opt.guicursor = ""
 
 require("config.lazy")
 
@@ -7,6 +8,7 @@ vim.cmd("colorscheme kanagawa")
 local lspconfig = require("lspconfig")
 
 lspconfig.lua_ls.setup({})
+lspconfig.rust_analyzer.setup({})
 
 vim.opt.nu = true
 
@@ -23,6 +25,8 @@ vim.fn.sign_define("DiagnosticSignError", { text = " ", texthl = "DiagnosticS
 vim.fn.sign_define("DiagnosticSignWarn", { text = " ", texthl = "DiagnosticSignWarn" })
 vim.fn.sign_define("DiagnosticSignInfo", { text = " ", texthl = "DiagnosticSignInfo" })
 vim.fn.sign_define("DiagnosticSignHint", { text = "󰌵", texthl = "DiagnosticSignHint" })
+
+vim.notify = require("notify")
 
 require("mappings")
 require("autocmd")

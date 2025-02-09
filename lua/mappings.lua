@@ -14,56 +14,55 @@ end
 
 local comp = require("cmp")
 
-keymap.set("i", "<Up>", function ()
+keymap.set("i", "<Up>", function()
 	if comp.visible() then
 		comp.select_prev_item()
 	else
 		feedkey(termcode("<Up>"))
 	end
-end, {noremap = true})
+end, { noremap = true })
 
-keymap.set("i", "<Down>", function ()
+keymap.set("i", "<Down>", function()
 	if comp.visible() then
-		comp.select_next_item()	
+		comp.select_next_item()
 	else
 		feedkey(termcode("<Down>"))
 	end
-end, {noremap = true})
+end, { noremap = true })
 
-
-keymap.set("i", "<tab>", function ()
+keymap.set("i", "<CR>", function()
 	if comp.visible() then
 		comp.confirm()
 	else
-		feedkey(termcode("<tab>"))
+		feedkey(termcode("<CR>"))
 	end
-end, {noremap = true})
+end, { noremap = true })
 
-keymap.set("i", "<Esc>", function ()
+keymap.set("i", "<Esc>", function()
 	if comp.visible() then
 		comp.abort()
 	else
 		feedkey(termcode("<Esc>"))
 	end
-end, {noremap = true})
+end, { noremap = true })
 
 ---@param lhs string From
 ---@param rhs string To
 ---@param desc string Description
 local function nmap(lhs, rhs, desc)
-	keymap.set("n", lhs, rhs, {noremap = true, desc = desc})
+	keymap.set("n", lhs, rhs, { noremap = true, desc = desc })
 end
 
 local function imap(lhs, rhs, desc)
-	keymap.set("i", lhs, rhs, {noremap = true, desc = desc})
+	keymap.set("i", lhs, rhs, { noremap = true, desc = desc })
 end
 
 local function vmap(lhs, rhs, desc)
-	keymap.set("v", lhs, rhs, {noremap = true, desc = desc})
+	keymap.set("v", lhs, rhs, { noremap = true, desc = desc })
 end
 
 local function lmap(lhs, rhs, desc)
-	keymap.set("n", "<leader>" .. lhs, rhs, {noremap = true, desc = desc})
+	keymap.set("n", "<leader>" .. lhs, rhs, { noremap = true, desc = desc })
 end
 
 imap("ff", "<Esc>", "Quickexit (i)")
@@ -82,10 +81,15 @@ lmap("fb", telescope.current_buffer_fuzzy_find, "Telescope - Fulltext buffer")
 
 local harpoon = require("harpoon")
 
-lmap("d", function () harpoon:list():add() end)
-lmap("<Left>", function () harpoon:list():prev() end)
-lmap("<Right>", function () harpoon:list():next() end)
-lmap("e", function () harpoon.ui:toggle_quick_menu(harpoon:list()) end)
-
-
-
+lmap("d", function()
+	harpoon:list():add()
+end, "Harpoon (add)")
+lmap("<Left>", function()
+	harpoon:list():prev()
+end, "Harpoon (prev)")
+lmap("<Right>", function()
+	harpoon:list():next()
+end, "Harpoon (next)")
+lmap("e", function()
+	harpoon.ui:toggle_quick_menu(harpoon:list())
+end, "Harpoon (ui)")
