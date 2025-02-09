@@ -62,6 +62,10 @@ local function vmap(lhs, rhs, desc)
 	keymap.set("v", lhs, rhs, {noremap = true, desc = desc})
 end
 
+local function lmap(lhs, rhs, desc)
+	keymap.set("n", "<leader>" .. lhs, rhs, {noremap = true, desc = desc})
+end
+
 imap("ff", "<Esc>", "Quickexit (i)")
 
 imap("<C-s>", "<Cmd> :write <CR>", "Write buffer (i)")
@@ -69,4 +73,19 @@ imap("<C-z>", "<Cmd> :undo <CR>", "Undo (i)")
 imap("<C-y>", "<Cmd> :redo <CR>", "Redo (i)")
 
 nmap("f", "<Cmd> :write <CR>", "Write buffer (n)")
+
+local telescope = require("telescope.builtin")
+
+lmap("ff", telescope.git_files, "Telescope - Find file")
+lmap("fg", telescope.live_grep, "Telescope - Fulltext All")
+lmap("fb", telescope.current_buffer_fuzzy_find, "Telescope - Fulltext buffer")
+
+local harpoon = require("harpoon")
+
+lmap("d", function () harpoon:list():add() end)
+lmap("<Left>", function () harpoon:list():prev() end)
+lmap("<Right>", function () harpoon:list():next() end)
+lmap("e", function () harpoon.ui:toggle_quick_menu(harpoon:list()) end)
+
+
 
